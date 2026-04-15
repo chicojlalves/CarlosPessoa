@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logo Preview – Carlos Pessoa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&family=Oswald:wght@500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #0f2240;
+      --gold:  #c8922a;
+      --gold2: #e0a83a;
+      --white: #ffffff;
+    }
+    body { font-family: 'Inter', sans-serif; background: #f0f2f5; }
+
+    h1 {
+      text-align: center;
+      padding: 36px 0 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: #444;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    p.sub { text-align: center; color: #888; font-size: .85rem; margin-bottom: 40px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+    }
+    .card__label {
+      background: var(--navy);
+      color: rgba(255,255,255,.7);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card__label span { color: var(--gold2); }
+
+    /* Two backgrounds per card: dark + light */
+    .card__previews {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .preview {
+      padding: 36px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview--dark  { background: var(--navy); }
+    .preview--light { background: #f8f9fc; border-left: 1px solid #eee; }
+
+    /* ============ OPTION 1: Monograma + Texto ============ */
+    .logo-1 {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-1__mark {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -.05em;
+      flex-shrink: 0;
+    }
+    .logo-1__text { line-height: 1; }
+    .logo-1__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -.02em;
+    }
+    .logo-1__name em { color: var(--gold2); font-style: normal; }
+    .logo-1__sub {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .55;
+      margin-top: 3px;
+      display: block;
+    }
+    .preview--dark  .logo-1__name { color: #fff; }
+    .preview--light .logo-1__name { color: var(--navy); }
+    .preview--dark  .logo-1__sub  { color: #fff; }
+    .preview--light .logo-1__sub  { color: var(--navy); }
+    .preview--light .logo-1__name em { color: var(--gold); }
+
+    /* ============ OPTION 2: Ícone Régua + Bold Type ============ */
+    .logo-2 {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .logo-2__icon {
+      flex-shrink: 0;
+      position: relative;
+    }
+    .logo-2__icon svg { display: block; }
+    .logo-2__text { line-height: 1; }
+    .logo-2__main {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.55rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      line-height: .95;
+    }
+    .logo-2__main span { display: block; }
+    .logo-2__main .ln1 { font-size: 1rem; letter-spacing: .22em; opacity: .7; font-weight: 600; }
+    .logo-2__main .ln2 { font-size: 1.55rem; }
+    .logo-2__divider {
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      margin: 4px 0;
+    }
+    .logo-2__sub {
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: .5;
+    }
+    .preview--dark  .logo-2__main { color: #fff; }
+    .preview--light .logo-2__main { color: var(--navy); }
+    .preview--dark  .logo-2__sub  { color: #fff; }
+    .preview--light .logo-2__sub  { color: var(--navy); }
+
+    /* ============ OPTION 3: Shield / Escudo CP ============ */
+    .logo-3 {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .logo-3__shield {
+      width: 46px; height: 52px;
+      position: relative; flex-shrink: 0;
+    }
+    .logo-3__shield svg { width: 100%; height: 100%; }
+    .logo-3__text { line-height: 1; }
+    .logo-3__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: -.02em;
+      line-height: .95;
+    }
+    .logo-3__name .first { display: block; font-size: .85rem; opacity: .7; font-weight: 600; }
+    .logo-3__name .last  { display: block; }
+    .logo-3__bar {
+      width: 32px; height: 2px;
+      background: var(--gold);
+      margin: 5px 0;
+    }
+    .logo-3__sub {
+      font-size: .58rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: .45;
+    }
+    .preview--dark  .logo-3__name { color: #fff; }
+    .preview--light .logo-3__name { color: var(--navy); }
+    .preview--dark  .logo-3__sub  { color: #fff; }
+    .preview--light .logo-3__sub  { color: var(--navy); }
+
+    /* ============ OPTION 4: Fulltype – Serif Industrial ============ */
+    .logo-4 { line-height: 1; }
+    .logo-4__top {
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .logo-4__first {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+    .logo-4__dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-bottom: 3px;
+      flex-shrink: 0;
+    }
+    .logo-4__last {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.85rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo-4__rule {
+      display: flex; align-items: center; gap: 0; margin: 6px 0 5px;
+    }
+    .logo-4__rule-line {
+      flex: 1; height: 1px; background: var(--gold); opacity: .6;
+    }
+    .logo-4__rule-diamond {
+      width: 7px; height: 7px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      margin: 0 6px;
+    }
+    .logo-4__sub {
+      font-family: 'Oswald', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: .45;
+      text-align: center;
+    }
+    .preview--dark  .logo-4__first { color: rgba(255,255,255,.75); }
+    .preview--dark  .logo-4__last  { color: #fff; }
+    .preview--dark  .logo-4__sub   { color: #fff; }
+    .preview--light .logo-4__first { color: rgba(15,34,64,.65); }
+    .preview--light .logo-4__last  { color: var(--navy); }
+    .preview--light .logo-4__sub   { color: var(--navy); }
+
+    /* ============ OPTION 5: Coluna/Viga mark ============ */
+    .logo-5 {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .logo-5__mark {
+      display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0;
+    }
+    .logo-5__cap {
+      width: 38px; height: 5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .logo-5__cols {
+      display: flex; gap: 5px; align-items: flex-end;
+    }
+    .logo-5__col {
+      width: 7px;
+      background: var(--gold);
+      border-radius: 2px 2px 0 0;
+    }
+    .logo-5__col:nth-child(1) { height: 26px; }
+    .logo-5__col:nth-child(2) { height: 34px; }
+    .logo-5__col:nth-child(3) { height: 20px; }
+    .logo-5__base {
+      width: 38px; height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .logo-5__text { line-height: 1; }
+    .logo-5__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: -.01em;
+    }
+    .logo-5__name strong { color: var(--gold2); font-weight: 900; }
+    .logo-5__tagline {
+      font-size: .6rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: .45;
+      margin-top: 3px;
+      display: block;
+    }
+    .preview--dark  .logo-5__name    { color: #fff; }
+    .preview--light .logo-5__name    { color: var(--navy); }
+    .preview--light .logo-5__name strong { color: var(--gold); }
+    .preview--dark  .logo-5__tagline { color: #fff; }
+    .preview--light .logo-5__tagline { color: var(--navy); }
+    .preview--light .logo-5__col,
+    .preview--light .logo-5__cap,
+    .preview--light .logo-5__base { background: var(--gold); }
+  </style>
+</head>
+<body>
+
+<h1>Opções de Logo — Carlos Pessoa</h1>
+<p class="sub">Cada opção é mostrada sobre fundo escuro (header) e fundo claro. Escolha a que mais gosta!</p>
+
+<div class="grid">
+
+  <!-- OPÇÃO 1: Monograma CP -->
+  <div class="card">
+    <div class="card__label">Opção 1 – Monograma <span>CP em badge dourado</span></div>
+    <div class="card__previews">
+      <div class="preview preview--dark">
+        <div class="logo-1">
+          <div class="logo-1__mark">CP</div>
+          <div class="logo-1__text">
+            <div class="logo-1__name">Carlos<em>Pessoa</em></div>
+            <span class="logo-1__sub">Construções</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview preview--light">
+        <div class="logo-1">
+          <div class="logo-1__mark">CP</div>
+          <div class="logo-1__text">
+            <div class="logo-1__name">Carlos<em>Pessoa</em></div>
+            <span class="logo-1__sub">Construções</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPÇÃO 2: Ícone Capacete + Tipo Condensado -->
+  <div class="card">
+    <div class="card__label">Opção 2 – Ícone + Tipo condensado <span>Identidade forte</span></div>
+    <div class="card__previews">
+      <div class="preview preview--dark">
+        <div class="logo-2">
+          <div class="logo-2__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <!-- Hard hat -->
+              <path d="M7 22h22v3a2 2 0 01-2 2H9a2 2 0 01-2-2v-3z" fill="#c8922a"/>
+              <path d="M18 6C12 6 8 11 8 16v2h20v-2C28 11 24 6 18 6z" fill="#e0a83a"/>
+              <rect x="15" y="4" width="6" height="4" rx="2" fill="#c8922a"/>
+              <rect x="6" y="19" width="24" height="3" rx="1.5" fill="#c8922a"/>
+            </svg>
+          </div>
+          <div class="logo-2__text">
+            <div class="logo-2__main">
+              <span class="ln1">Carlos</span>
+              <span class="ln2">Pessoa</span>
+            </div>
+            <div class="logo-2__divider"></div>
+            <div class="logo-2__sub">Construções & Reformas</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview preview--light">
+        <div class="logo-2">
+          <div class="logo-2__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <path d="M7 22h22v3a2 2 0 01-2 2H9a2 2 0 01-2-2v-3z" fill="#c8922a"/>
+              <path d="M18 6C12 6 8 11 8 16v2h20v-2C28 11 24 6 18 6z" fill="#0f2240"/>
+              <rect x="15" y="4" width="6" height="4" rx="2" fill="#0f2240"/>
+              <rect x="6" y="19" width="24" height="3" rx="1.5" fill="#0f2240"/>
+            </svg>
+          </div>
+          <div class="logo-2__text">
+            <div class="logo-2__main">
+              <span class="ln1">Carlos</span>
+              <span class="ln2">Pessoa</span>
+            </div>
+            <div class="logo-2__divider"></div>
+            <div class="logo-2__sub">Construções & Reformas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPÇÃO 3: Escudo CP -->
+  <div class="card">
+    <div class="card__label">Opção 3 – Escudo com iniciais <span>Clássico & confiável</span></div>
+    <div class="card__previews">
+      <div class="preview preview--dark">
+        <div class="logo-3">
+          <div class="logo-3__shield">
+            <svg viewBox="0 0 46 52" fill="none">
+              <path d="M23 2L4 10v16c0 12 8.5 22.5 19 24.5C34.5 48.5 43 38 43 26V10L23 2z" fill="#c8922a"/>
+              <path d="M23 6L7 13v13c0 10 7 19.5 16 21.5C32 45.5 39 36 39 26V13L23 6z" fill="#0f2240"/>
+              <text x="23" y="32" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="900" font-size="14" fill="#fff" letter-spacing="-1">CP</text>
+            </svg>
+          </div>
+          <div class="logo-3__text">
+            <div class="logo-3__name">
+              <span class="first">Carlos</span>
+              <span class="last">Pessoa</span>
+            </div>
+            <div class="logo-3__bar"></div>
+            <div class="logo-3__sub">Construções & Reformas</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview preview--light">
+        <div class="logo-3">
+          <div class="logo-3__shield">
+            <svg viewBox="0 0 46 52" fill="none">
+              <path d="M23 2L4 10v16c0 12 8.5 22.5 19 24.5C34.5 48.5 43 38 43 26V10L23 2z" fill="#c8922a"/>
+              <path d="M23 6L7 13v13c0 10 7 19.5 16 21.5C32 45.5 39 36 39 26V13L23 6z" fill="#0f2240"/>
+              <text x="23" y="32" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="900" font-size="14" fill="#fff" letter-spacing="-1">CP</text>
+            </svg>
+          </div>
+          <div class="logo-3__text">
+            <div class="logo-3__name">
+              <span class="first">Carlos</span>
+              <span class="last">Pessoa</span>
+            </div>
+            <div class="logo-3__bar"></div>
+            <div class="logo-3__sub">Construções & Reformas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPÇÃO 4: Tipografia Industrial Oswald -->
+  <div class="card">
+    <div class="card__label">Opção 4 – Tipografia industrial <span>Moderno & sofisticado</span></div>
+    <div class="card__previews">
+      <div class="preview preview--dark">
+        <div class="logo-4">
+          <div class="logo-4__top">
+            <span class="logo-4__first">Carlos</span>
+            <div class="logo-4__dot"></div>
+          </div>
+          <div class="logo-4__last">Pessoa</div>
+          <div class="logo-4__rule">
+            <div class="logo-4__rule-line"></div>
+            <div class="logo-4__rule-diamond"></div>
+            <div class="logo-4__rule-line"></div>
+          </div>
+          <div class="logo-4__sub">Construções & Reformas</div>
+        </div>
+      </div>
+      <div class="preview preview--light">
+        <div class="logo-4">
+          <div class="logo-4__top">
+            <span class="logo-4__first">Carlos</span>
+            <div class="logo-4__dot"></div>
+          </div>
+          <div class="logo-4__last">Pessoa</div>
+          <div class="logo-4__rule">
+            <div class="logo-4__rule-line"></div>
+            <div class="logo-4__rule-diamond"></div>
+            <div class="logo-4__rule-line"></div>
+          </div>
+          <div class="logo-4__sub">Construções & Reformas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPÇÃO 5: Colunas / Estrutura -->
+  <div class="card">
+    <div class="card__label">Opção 5 – Marca de colunas <span>Minimalista & geométrico</span></div>
+    <div class="card__previews">
+      <div class="preview preview--dark">
+        <div class="logo-5">
+          <div class="logo-5__mark">
+            <div class="logo-5__cap"></div>
+            <div class="logo-5__cols">
+              <div class="logo-5__col"></div>
+              <div class="logo-5__col"></div>
+              <div class="logo-5__col"></div>
+            </div>
+            <div class="logo-5__base"></div>
+          </div>
+          <div class="logo-5__text">
+            <div class="logo-5__name">Carlos<strong>Pessoa</strong></div>
+            <span class="logo-5__tagline">Construções & Reformas</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview preview--light">
+        <div class="logo-5">
+          <div class="logo-5__mark">
+            <div class="logo-5__cap"></div>
+            <div class="logo-5__cols">
+              <div class="logo-5__col"></div>
+              <div class="logo-5__col"></div>
+              <div class="logo-5__col"></div>
+            </div>
+            <div class="logo-5__base"></div>
+          </div>
+          <div class="logo-5__text">
+            <div class="logo-5__name">Carlos<strong>Pessoa</strong></div>
+            <span class="logo-5__tagline">Construções & Reformas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
