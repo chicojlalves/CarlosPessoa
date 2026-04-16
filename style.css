@@ -155,7 +155,7 @@ ul { list-style: none; }
   letter-spacing: -.3px;
   flex-shrink: 0;
 }
-.logo__icon { font-size: 1.4rem; line-height: 1; }
+.logo__icon { width: 50px; height: 100px; object-fit: contain; flex-shrink: 0; }
 .logo__text strong { color: var(--gold-light); }
 
 .nav {
@@ -267,7 +267,7 @@ ul { list-style: none; }
 }
 .hero__title {
   font-family: var(--font-head);
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: clamp(1.2rem, 5vw, 3.8rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.1;
