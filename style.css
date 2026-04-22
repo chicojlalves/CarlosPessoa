@@ -18,7 +18,8 @@
   --white:       #ffffff;
   --text:        #1a2636;
   --text-mid:    #3d5068;
-  --text-light:  #637b96;
+  --text-light:  #536076;
+  --gold-dark:   #7a5219;
 
   --radius-sm:   6px;
   --radius:      12px;
@@ -359,7 +360,7 @@ ul { list-style: none; }
 }
 .section__tag {
   display: inline-block;
-  color: var(--gold);
+  color: var(--gold-dark);
   font-size: .78rem;
   font-weight: 700;
   letter-spacing: .1em;
@@ -736,8 +737,8 @@ ul { list-style: none; }
   line-height: 1.7;
   max-width: 220px;
 }
-.footer__links h4,
-.footer__contact h4 {
+.footer__links h3,
+.footer__contact h3 {
   color: var(--white);
   font-size: .85rem;
   font-weight: 700;

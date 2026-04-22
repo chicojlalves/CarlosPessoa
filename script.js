@@ -143,8 +143,6 @@ const animateEls = document.querySelectorAll(
   '.service-card, .diff-card, .testimonial-card, .about__content, .about__image, .info-item, .portfolio-item'
 );
 
-animateEls.forEach(el => el.classList.add('fade-in'));
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -154,20 +152,24 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-animateEls.forEach(el => observer.observe(el));
+requestAnimationFrame(() => {
+  animateEls.forEach(el => el.classList.add('fade-in'));
 
-/* Stagger cards */
-document.querySelectorAll('.services__grid .service-card').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 60}ms`;
-});
-document.querySelectorAll('.diff__grid .diff-card').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 60}ms`;
-});
-document.querySelectorAll('.testimonials__grid .testimonial-card').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 80}ms`;
-});
-document.querySelectorAll('.portfolio__grid .portfolio-item').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 50}ms`;
+  /* Stagger cards */
+  document.querySelectorAll('.services__grid .service-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 60}ms`;
+  });
+  document.querySelectorAll('.diff__grid .diff-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 60}ms`;
+  });
+  document.querySelectorAll('.testimonials__grid .testimonial-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 80}ms`;
+  });
+  document.querySelectorAll('.portfolio__grid .portfolio-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 50}ms`;
+  });
+
+  animateEls.forEach(el => observer.observe(el));
 });
 
 /* ============================================
