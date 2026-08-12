@@ -989,6 +989,46 @@ ul { list-style: none; }
 }
 .portfolio-item:hover .portfolio-item__fig img { transform: scale(1.06); }
 
+/* Selo ANTES / DEPOIS / VÍDEO */
+.portfolio-item__badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  z-index: 3;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--font-head);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(10,20,40,.35);
+}
+.portfolio-item__badge--antes  { background: rgba(122,82,25,.94); }
+.portfolio-item__badge--depois { background: rgba(17,110,64,.94); }
+.portfolio-item__badge--video  { background: rgba(15,34,64,.88); }
+
+/* Botão de play sobre a capa do vídeo */
+.portfolio-item__play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(15,34,64,.30);
+  transition: background var(--transition);
+}
+.portfolio-item:hover .portfolio-item__play { background: rgba(15,34,64,.12); }
+.portfolio-item__play svg {
+  width: 56px; height: 56px;
+  color: var(--white);
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,.55));
+  transition: transform var(--transition);
+}
+.portfolio-item:hover .portfolio-item__play svg { transform: scale(1.12); }
+
 .portfolio-item__placeholder {
   position: absolute;
   inset: 0;
@@ -1117,6 +1157,14 @@ ul { list-style: none; }
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0,0,0,.5);
   display: block;
+}
+.lightbox__video {
+  max-width: 90vw;
+  max-height: 78vh;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  background: #000;
+  display: none;
 }
 .lightbox__placeholder {
   width: min(560px, 85vw);
