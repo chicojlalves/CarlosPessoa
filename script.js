@@ -65,6 +65,7 @@ filterBtns.forEach(btn => {
    ============================================ */
 const lightbox        = document.getElementById('lightbox');
 const lightboxImg     = document.getElementById('lightboxImg');
+const lightboxVideo   = document.getElementById('lightboxVideo');
 const lightboxPlaceh  = document.getElementById('lightboxPlaceholder');
 const lightboxCaption = document.getElementById('lightboxCaption');
 const lightboxClose   = document.getElementById('lightboxClose');
@@ -89,19 +90,35 @@ function openLightbox(index) {
 function closeLightbox() {
   lightbox.classList.remove('open');
   document.body.style.overflow = '';
+  stopVideo();
+}
+
+/* Para o vídeo e descarta o download ao sair do item */
+function stopVideo() {
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute('src');
+  lightboxVideo.load();
+  lightboxVideo.style.display = 'none';
 }
 
 function showItem(index) {
   const item  = visibleItems[index];
   const img   = item.querySelector('img');
+  const video = item.dataset.video;
   const title = item.dataset.title || '';
   const local = item.dataset.local || '';
   const icon  = item.querySelector('.portfolio-item__placeholder')?.firstChild?.textContent || '🏗';
 
   lightboxImg.style.display = 'none';
   lightboxPlaceh.classList.remove('show');
+  stopVideo();
 
-  if (img && img.naturalWidth > 0) {
+  if (video) {
+    lightboxVideo.src    = video;
+    lightboxVideo.poster = img ? img.src : '';
+    lightboxVideo.style.display = 'block';
+    lightboxVideo.play().catch(() => {});
+  } else if (img && img.naturalWidth > 0) {
     lightboxImg.src = img.src;
     lightboxImg.alt = title;
     lightboxImg.style.display = 'block';
